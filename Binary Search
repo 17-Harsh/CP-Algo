@@ -1,0 +1,119 @@
+void solve()
+{
+  
+  int n,k;
+  cin>>n>>k;
+  vector<int>v(n);
+  for (int i = 0; i < n; i++)
+  {
+    cin>>v[i];
+
+  }
+  
+ 
+  for(int i=0;i<k;i++)
+  {
+  
+    int x;
+    cin>>x;
+    int l=0,r=n-1;
+    bool check=false;
+    while(r>=l)
+    {
+    int m = (l+r)/2;
+    if(v[m]==x)
+    {
+      check=true;
+      break;
+    }
+      
+    else if(v[m] < x)
+    {
+        
+    l=m+1;
+    
+    } 
+    else if(v[m] > x)
+    {
+      
+     r=m-1;
+    }
+     
+    }
+    
+    
+    if(check==true)
+  {
+    cout<<"YES"<<endl;
+  }
+  else
+  {
+    cout<<"NO"<<endl;
+  }
+    
+  }
+  
+  
+  
+  
+}
+
+
+signed main() 
+{
+ios::sync_with_stdio(false); cin.tie(NULL);
+
+solve();
+return 0;
+}
+/* Approach 
+
+
+Array in sorted order
+a[i]<= a[i+1]
+
+position of the element to be searched is returned 
+ 
+every time search space is reduced by n/2 times, hence O(log n )
+
+Element closest to x;
+
+choose maximum element that is not greater than x;
+choose minimum element that is not less than x;
+
+choose from these both options the one that is closer to x
+
+
+finding the maximum element not greater than x;
+two pointer approach :
+add +infinity and - infinity at the both ends
+
+a[l]<=x & a[r]>x;
+l=-1 ; // indices 
+r=n; 
+
+arr = [2,4,6,8,10,12,14,16] let x = 11;
+arr =[-inf,2,4,6,8,10,12,14,16,+inf]
+     
+     mid = 10/2 = 5 th index
+     mid element = 8 ;
+     
+     
+      
+while(l+1<r) till pointers converge 
+
+if a[mid]<= x; l=m and r will remain the same (ie = n)
+if a[mid] > x; r=m and l remains the same(ie = -1)
+
+
+so l=m 
+
+[8,10,12,14,16,+inf] 
+mid = 6/2 =3 rd index 
+mid = 12 
+
+a[mid]>x;
+r=m;
+
+a[mid]
+*/
